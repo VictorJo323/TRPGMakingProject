@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed462b476ee74df7adcee83822ee16e, type: 3}
+  m_Name: UnitSOA0003
+  m_EditorClassIdentifier: 
+  id: 1002
+  type: 0
+  callSign: Mage
+  description: Long-ranged, magical dealer
+  initHP: 0
+  initSP: 0
+  initATK: 0
+  initDEF: 0
+  initINT: 0
+  initRES: 0
+  moveRange: 0
+  atkRange: 0
+  critRate: 0
+  lvupHP:
+    minValue: 0
+    maxValue: 0
+  lvupSP:
+    minValue: 0
+    maxValue: 0
+  lvupATK:
+    minValue: 0
+    maxValue: 0
+  lvupDEF:
+    minValue: 0
+    maxValue: 0
+  lvupINT:
+    minValue: 0
+    maxValue: 0
+  lvupRES:
+    minValue: 0
+    maxValue: 0
