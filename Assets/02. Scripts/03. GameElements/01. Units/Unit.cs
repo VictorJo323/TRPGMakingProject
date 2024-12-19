@@ -49,7 +49,7 @@ public class Unit : MonoBehaviour
         expCap = initExpCap;
     }
 
-    public Type GetType()
+    public Type GetUnitType()
     {
         return type; 
     }

@@ -6,7 +6,7 @@ public class DamageEffect : SpecialEffects
 {
     public override void ApplySkillEffect(Unit caster, Unit target)
     {
-        float typeMultiplier = GameManager.Instance.TypeEffectiveness.GetTypeMultiplier(caster.GetType(), target.GetType());
+        float typeMultiplier = GameManager.Instance.TypeEffectiveness.GetTypeMultiplier(caster.GetUnitType(), target.GetUnitType());
         int damageAmount = CalculateDamage(caster, target, typeMultiplier);
         target.TakeDamage(damageAmount);
     }
