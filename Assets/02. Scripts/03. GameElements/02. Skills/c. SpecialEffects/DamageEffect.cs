@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SOSettings/Skills/SkillEffects/Damage", fileName = "Damage#", order = 0)]
 public class DamageEffect : SpecialEffects
 {
     public override void ApplySkillEffect(Unit caster, Unit target)
     {
         float typeMultiplier = GameManager.Instance.TypeEffectiveness.GetTypeMultiplier(caster.GetUnitType(), target.GetUnitType());
         int damageAmount = CalculateDamage(caster, target, typeMultiplier);
-        target.TakeDamage(damageAmount);
+        target.AdjustHealth(-damageAmount);
     }
 
     private int CalculateDamage(Unit caster, Unit target, float typeMultiplier)

@@ -149,4 +149,10 @@ public class DatabaseSO<T> : ScriptableObject where T : BaseData
         var targetList = searchList ?? items;
         return targetList.Find(item => item.callSign == name); 
     }
+    
+    public T GetRandomItem(List<T> searchList = null)
+    {
+        int index = Random.Range(0, searchList.Count);
+        return searchList[index]; 
+    }
 }

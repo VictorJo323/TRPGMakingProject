@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] private UnitSO unitInfo;
+    [SerializeField] public UnitSO unitInfo;
 
     public int level;
     private Type type;
@@ -27,7 +27,9 @@ public class Unit : MonoBehaviour
     private int exp;
     private int expCap;
     private int initExpCap = 100;
-    
+
+    private List<Buffs> buffsList;
+    private List<Debuffs> debuffList;
     [SerializeField] private AnimationCurve expCurve;
 
     // Start is called before the first frame update
@@ -121,18 +123,50 @@ public class Unit : MonoBehaviour
         expCap = GetNewExpCap();
         Debug.Log($"Current level:{level}, current expCap: {expCap}");
     }
-    
-    public void TakeDamage(int damageAmount)
+
+    public void AdjustHealth(int amount)
     {
-        curHP = Mathf.Clamp(curHP - damageAmount, 0, maxHP);
-        
-        if(curHP<=0)
+        // 체력 조정
+        curHP = Mathf.Clamp(curHP + amount, 0, maxHP);
+
+        // 체력이 0 이하라면 사망 처리
+        if (curHP <= 0)
         {
-            OnDeath(); 
-	    }
+            OnDeath();
+        }
+    }
+
+    public void AdjustStat(Stat stat, float amount)
+    {
+	    switch(stat)
+        {
+            case Stat.Strength:
+                curATK = Mathf.RoundToInt(curATK*(1 + amount));
+                break;
+            case Stat.Intelligence:
+                curINT = Mathf.RoundToInt(curINT * (1 + amount));
+                break;
+            case Stat.Defence:
+                curDEF = Mathf.RoundToInt(curDEF * (1 + amount));
+                break;
+            case Stat.Resistance:
+                curRES = Mathf.RoundToInt(curRES * (1 + amount));
+                break;
+            case Stat.MoveRange:
+                curMoveRange += (int)amount;
+                break;
+            case Stat.CritRate:
+                break;
+		 
+	    }	     
     }
 
     private void OnDeath()
     {
+    }
+
+    public void AddDebuff(Debuffs debuff)
+    {
+        debuffList.Add(debuff);
     }
 }
